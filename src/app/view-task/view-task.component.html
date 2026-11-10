@@ -1,0 +1,43 @@
+@if (task) {
+  <h2>View Task Details</h2>
+
+  <p><strong>Task ID:</strong> {{ task.id }}</p>
+  <p><strong>Current Status:</strong>
+    {{ task.completed ? 'Done' : 'Pending' }}
+  </p>
+
+  <hr />
+
+  <h3>Edit Task</h3>
+
+  <form (ngSubmit)="updateTask()">
+    <label>Title</label>
+
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="title"
+      required
+    />
+
+    <br /><br />
+
+    <label>Description</label>
+
+    <textarea
+      name="description"
+      [(ngModel)]="description"
+    ></textarea>
+
+    <br /><br />
+
+    <button type="submit">Save Changes</button>
+  </form>
+
+  <br />
+
+  <a routerLink="/tasks">Back to Task List</a>
+} @else {
+  <h2>Task not found</h2>
+  <a routerLink="/tasks">Back to Task List</a>
+}
